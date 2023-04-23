@@ -5,19 +5,16 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FileReader {
-    private File file;
-    private String path;
     private String data;
-
 
     public FileReader(String path) {
         try {
             File myObj = new File(path);
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                data = myReader.nextLine();
+            Scanner reader = new Scanner(myObj);
+            while (reader.hasNextLine()) {
+                data = reader.nextLine();
             }
-            myReader.close();
+            reader.close();
         } catch (FileNotFoundException e) {
             System.out.println("BAG ENGINE::::FILE READING ERROR: FILE NOT FOUND: " + path);
             e.printStackTrace();
@@ -25,10 +22,6 @@ public class FileReader {
     }
 
     public String getData(){
-        
+        return data;
     }
-
-
-
-
 }

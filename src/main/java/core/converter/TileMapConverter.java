@@ -18,7 +18,7 @@ public class TileMapConverter {
     }
 
     public ArrayList<Integer> convertStringArrayToIntegerArray(String[] data) {
-        ArrayList<Integer> bufferData = null;
+        ArrayList<Integer> bufferData = new ArrayList<>();
         for(int i = 0; i < data.length; i++) {
             try{
                 bufferData.add(Integer.parseInt(data[i]));

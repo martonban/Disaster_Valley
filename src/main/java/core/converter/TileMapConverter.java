@@ -23,7 +23,7 @@ public class TileMapConverter {
             try{
                 bufferData.add(Integer.parseInt(data[i]));
             } catch (NumberFormatException ex) {
-                System.out.println("BAG ENGINE::::TILEMAP CONVERT ERROR: The tilemap file is not correct!");
+                System.out.println("FOUNDATION ENGINE::::TILEMAP CONVERT ERROR: The tilemap file is not correct!");
             }
         }
         return bufferData;

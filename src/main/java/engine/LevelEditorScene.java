@@ -1,5 +1,6 @@
 package engine;
 
+import components.Animation;
 import components.SpriteRenderer;
 import components.Spritesheet;
 import components.TileMap;
@@ -69,6 +70,7 @@ public class LevelEditorScene extends Scene{
         // obj1.transform.position.x += 10 * dt;
 
         // Animation
+        /*
         spriteFlipTimeLeft -= dt;
         if(spriteFlipTimeLeft <= 0) {
             spriteFlipTimeLeft = spriteFlipTime;
@@ -78,6 +80,12 @@ public class LevelEditorScene extends Scene{
             }
             obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
         }
+        */
+
+        Animation animation1 = new Animation(3);
+
+        animation1.play(dt, obj1, sprites);
+
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);

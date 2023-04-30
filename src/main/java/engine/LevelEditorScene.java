@@ -13,6 +13,10 @@ public class LevelEditorScene extends Scene{
     private GameObject obj1;
     private Spritesheet sprites;
 
+    Animation animation1 = new Animation(3);
+    Animation animation2 = new Animation(7);
+    Animation animation3 = new Animation(11);
+
     public LevelEditorScene() {
 
     }
@@ -37,12 +41,6 @@ public class LevelEditorScene extends Scene{
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
 
-        /*
-        GameObject obj3 = new GameObject("Object 1", new Transform(new Vector2f(400,100),
-                new Vector2f(256, 256)) , 1);
-        obj3.addComponent(new SpriteRenderer(sprites.getSprite(0)));
-        this.addGameObjectToScene(obj3);
-        */
 
     }
 
@@ -54,9 +52,9 @@ public class LevelEditorScene extends Scene{
                         16, 16, 26, 0));
     }
 
-    private int spriteIndex = 0;
-    private float spriteFlipTime = 0.2f;
-    private float spriteFlipTimeLeft = 0.0f;
+    //private int spriteIndex = 0;
+    //private float spriteFlipTime = 0.2f;
+    //private float spriteFlipTimeLeft = 0.0f;
     @Override
     public void update(float dt) {
         // Camera Changing
@@ -82,9 +80,9 @@ public class LevelEditorScene extends Scene{
         }
         */
 
-        Animation animation1 = new Animation(3);
 
-        animation1.play(dt, obj1, sprites);
+
+        animation3.play(dt, obj1, sprites);
 
 
         for (GameObject go : this.gameObjects) {

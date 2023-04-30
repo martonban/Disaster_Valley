@@ -23,7 +23,7 @@ public class Animation {
         if(spriteFlipTimeLeft <= 0) {
             spriteFlipTimeLeft = spriteFlipTime;
             spriteIndex++;
-            if(spriteIndex > 4) {
+            if(spriteIndex > endFrameNumber) {
                 spriteIndex = 0;
             }
             obj.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));

@@ -29,7 +29,7 @@ public class GameObject {
                 try {
                     return componentClass.cast(c);
                 } catch (ClassCastException e) {
-                    assert false : "Error: Casting a component.";
+                    assert false : "FOUNDATION ENGINE::Error: Can't cast a component.";
                 }
             }
         }

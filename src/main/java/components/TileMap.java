@@ -37,8 +37,8 @@ public class TileMap {
 
     public void generateTileMap() {
         for(int i = 0; i < dataFromTileMapFile.size(); i += 3) {
-            GameObject obj = new GameObject("Sprite " + i, new Transform(new Vector2f(dataFromTileMapFile.get(i),dataFromTileMapFile.get(i+1)),
-                    new Vector2f(oneTileSize, oneTileSize)), zIndex);
+            GameObject obj = new GameObject("Sprite " + i, new Transform(new Vector2f((dataFromTileMapFile.get(i) * oneTileSize),
+                    (dataFromTileMapFile.get(i+1)) * oneTileSize), new Vector2f(oneTileSize, oneTileSize)), zIndex);
             obj.addComponent(new SpriteRenderer(spritesheet.getSprite(dataFromTileMapFile.get(i+2))));
             sprites.add(obj);
         }

@@ -13,9 +13,9 @@ public class LevelEditorScene extends Scene{
     private GameObject obj1;
     private Spritesheet sprites;
 
-    Animation animation1 = new Animation(3);
+    Animation animation1 = new Animation(0,3);
     Animation animation2 = new Animation(7);
-    Animation animation3 = new Animation(11);
+    Animation animation3 = new Animation(16);
 
     public LevelEditorScene() {
 
@@ -27,7 +27,7 @@ public class LevelEditorScene extends Scene{
 
         this.camera = new Camera(new Vector2f());
 
-        sprites = AssetPool.getSpritesheet("assets/textures/spritesheet.png");
+        sprites = AssetPool.getSpritesheet("assets/Character/PlayerMovement.png");
 
         TileMap tileMap = new TileMap("assets/test/test.txt",
                 "assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
@@ -40,21 +40,16 @@ public class LevelEditorScene extends Scene{
                 new Vector2f(100, 100)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
-
-
     }
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
 
-        AssetPool.addSpritesheet("assets/textures/spritesheet.png",
-                new Spritesheet(AssetPool.getTexture("assets/textures/spritesheet.png"),
-                        16, 16, 26, 0));
+        AssetPool.addSpritesheet("assets/Character/PlayerMovement.png",
+                new Spritesheet(AssetPool.getTexture("assets/Character/PlayerMovement.png"),
+                        16, 16, 16, 0));
     }
 
-    //private int spriteIndex = 0;
-    //private float spriteFlipTime = 0.2f;
-    //private float spriteFlipTimeLeft = 0.0f;
     @Override
     public void update(float dt) {
         // Camera Changing
@@ -62,27 +57,13 @@ public class LevelEditorScene extends Scene{
         // camera.position.y -= dt * 30.0f;
 
         // FPS Counter
-        //System.out.println("FPS: " + (1.0 / dt));
+        System.out.println("FPS: " + (1.0 / dt));
 
         // Movement
         // obj1.transform.position.x += 10 * dt;
 
         // Animation
-        /*
-        spriteFlipTimeLeft -= dt;
-        if(spriteFlipTimeLeft <= 0) {
-            spriteFlipTimeLeft = spriteFlipTime;
-            spriteIndex++;
-            if(spriteIndex > 4) {
-                spriteIndex = 0;
-            }
-            obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
-        }
-        */
-
-
-
-        animation3.play(dt, obj1, sprites);
+        animation1.play(dt, obj1, sprites);
 
 
         for (GameObject go : this.gameObjects) {

@@ -4,19 +4,23 @@ import engine.GameObject;
 
 public class Animation {
 
+    private int startFrameNumber;
     private int endFrameNumber;
     private int spriteIndex = 0;
     private float spriteFlipTime = 0.2f;
     private float spriteFlipTimeLeft = 0.0f;
 
     public Animation(int endFrameNumber) {
+        this.startFrameNumber = 0;
         this.endFrameNumber = endFrameNumber;
     }
 
-    public Animation(int endFrameNumber, float spriteFlipTime) {
+    public Animation(int start, int endFrameNumber) {
+        this.startFrameNumber = start;
         this.endFrameNumber = endFrameNumber;
-        this.spriteFlipTime = spriteFlipTime;
+        this.spriteIndex = start;
     }
+
 
     public void play (float dt, GameObject obj, Spritesheet sprites) {
         spriteFlipTimeLeft -= dt;
@@ -24,7 +28,7 @@ public class Animation {
             spriteFlipTimeLeft = spriteFlipTime;
             spriteIndex++;
             if(spriteIndex > endFrameNumber) {
-                spriteIndex = 0;
+                spriteIndex = startFrameNumber;
             }
             obj.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
         }

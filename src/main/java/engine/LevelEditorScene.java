@@ -14,8 +14,8 @@ public class LevelEditorScene extends Scene{
     private Spritesheet sprites;
 
     Animation animation1 = new Animation(0,3);
-    Animation animation2 = new Animation(7);
-    Animation animation3 = new Animation(16);
+    Animation animation2 = new Animation(4,7);
+
 
     public LevelEditorScene() {
 
@@ -29,7 +29,7 @@ public class LevelEditorScene extends Scene{
 
         sprites = AssetPool.getSpritesheet("assets/Character/PlayerMovement.png");
 
-        TileMap tileMap = new TileMap("assets/test/test.txt",
+        TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
                 "assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
                 16, 64,77, -1);
 
@@ -63,7 +63,7 @@ public class LevelEditorScene extends Scene{
         // obj1.transform.position.x += 10 * dt;
 
         // Animation
-        animation1.play(dt, obj1, sprites);
+        animation2.play(dt, obj1, sprites);
 
 
         for (GameObject go : this.gameObjects) {

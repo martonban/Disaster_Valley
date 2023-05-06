@@ -17,7 +17,7 @@ public class TileMap {
     private int oneTileSize;
     private String path;
 
-    public TileMap(String tileMapFilePath, String tileMapImagePath , int oneTileSizeReal, int oneTileSize, int numberOfSprites, int zIndex) {
+    public TileMap(String tileMapFilePath, String tileMapImagePath, int oneTileSizeReal, int oneTileSize, int numberOfSprites, int zIndex) {
         // Data From File Reader
         TileMapConverter tileMapConverter = new TileMapConverter(tileMapFilePath);
         tileMapConverter.convert();
@@ -34,6 +34,26 @@ public class TileMap {
         this.oneTileSize = oneTileSize;
         this.path = tileMapImagePath;
     }
+
+    public TileMap(String tileMapFilePath, String mode, String tileMapImagePath, int oneTileSizeReal, int oneTileSize, int numberOfSprites, int zIndex) {
+        // Data From File Reader
+        TileMapConverter tileMapConverter = new TileMapConverter(tileMapFilePath, mode);
+        tileMapConverter.convert();
+        dataFromTileMapFile = tileMapConverter.getDataToTileMap();
+
+        // AssetsPoolAdd
+        AssetPool.addSpritesheet(tileMapImagePath,
+                new Spritesheet(AssetPool.getTexture(tileMapImagePath),
+                        oneTileSizeReal, oneTileSizeReal, numberOfSprites, 0));
+
+        // Other data
+        this.zIndex = zIndex;
+        this.spritesheet = AssetPool.getSpritesheet(tileMapImagePath);
+        this.oneTileSize = oneTileSize;
+        this.path = tileMapImagePath;
+    }
+
+
 
     public void generateTileMap() {
         for(int i = 0; i < dataFromTileMapFile.size(); i += 3) {

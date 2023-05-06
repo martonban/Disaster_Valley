@@ -7,14 +7,17 @@ import components.TileMap;
 import org.joml.Vector2f;
 import core.os.AssetPool;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class LevelEditorScene extends Scene{
     private GameObject obj1;
     private Spritesheet sprites;
 
-    Animation animation1 = new Animation(0,3);
-    Animation animation2 = new Animation(4,7);
+    Animation animationUp = new Animation(4, 7);
+    Animation animationDown = new Animation(0, 3);
+    Animation animationLeft = new Animation(8, 11);
+    Animation animationRight = new Animation(12, 15);
 
 
     public LevelEditorScene() {
@@ -60,10 +63,31 @@ public class LevelEditorScene extends Scene{
         System.out.println("FPS: " + (1.0 / dt));
 
         // Movement
-        // obj1.transform.position.x += 10 * dt;
+        if(KeyListener.isKeyPressed(KeyEvent.VK_D)) {
+            obj1.transform.position.x += 100 * dt;
+            animationLeft.play(dt, obj1, sprites);
+        }
+
+        if(KeyListener.isKeyPressed(KeyEvent.VK_A)) {
+            obj1.transform.position.x -= 100 * dt;
+            animationRight.play(dt, obj1, sprites);
+        }
+
+        if(KeyListener.isKeyPressed(KeyEvent.VK_W)) {
+            obj1.transform.position.y += 100 * dt;
+            animationUp.play(dt, obj1, sprites);
+        }
+
+        if(KeyListener.isKeyPressed(KeyEvent.VK_S)) {
+            obj1.transform.position.y -= 100 * dt;
+            animationDown.play(dt, obj1, sprites);
+        }
+
+
+
 
         // Animation
-        animation2.play(dt, obj1, sprites);
+
 
 
         for (GameObject go : this.gameObjects) {

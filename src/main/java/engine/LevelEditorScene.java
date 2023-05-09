@@ -4,6 +4,7 @@ import components.Animation;
 import components.SpriteRenderer;
 import components.Spritesheet;
 import components.TileMap;
+import core.physics.CollisionBox;
 import org.joml.Vector2f;
 import core.os.AssetPool;
 
@@ -19,6 +20,9 @@ public class LevelEditorScene extends Scene{
     Animation animationRight = new Animation(8, 11);
     Animation animationLeft = new Animation(12, 15);
     Animation animationStop = new Animation(0, 0);
+
+    CollisionBox collisionBox1;
+    CollisionBox collisionBox2;
 
 
     public LevelEditorScene() {
@@ -40,10 +44,17 @@ public class LevelEditorScene extends Scene{
         tileMap.generateTileMap();
         tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(100,100),
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
+
+        collisionBox1 = new CollisionBox(new Transform(new Vector2f(0,0),
+                new Vector2f(100, 100)), new Vector2f(100, 100));
+        collisionBox2 = new CollisionBox(new Transform(new Vector2f(10000,10000),
+                new Vector2f(100, 100)), new Vector2f(100, 100));
+
+
     }
 
     private void loadResources() {
@@ -85,6 +96,10 @@ public class LevelEditorScene extends Scene{
             animationRight.play(dt, obj1, sprites);
         } else if (obj1.transform.position.x == previousPosition.position.x) {
             animationStop.play(dt, obj1, sprites);
+        }
+
+        if(collisionBox1.isThatCollited(collisionBox2)) {
+            System.out.println("Collited");
         }
 
 

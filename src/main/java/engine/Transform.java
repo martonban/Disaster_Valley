@@ -40,4 +40,8 @@ public class Transform {
         Transform t = (Transform)o;
         return t.position.equals(this.position) && t.scale.equals(this.scale);
     }
+
+    public void setPosition(Vector2f pos) {
+        this.position = pos;
+    }
 }

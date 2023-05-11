@@ -11,6 +11,7 @@ import core.os.AssetPool;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+
 public class LevelEditorScene extends Scene{
     private GameObject obj1;
     private Spritesheet sprites;
@@ -51,7 +52,7 @@ public class LevelEditorScene extends Scene{
 
         collisionBox1 = new CollisionBox(new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)), new Vector2f(100, 100));
-        collisionBox2 = new CollisionBox(new Transform(new Vector2f(10000,10000),
+        collisionBox2 = new CollisionBox(new Transform(new Vector2f(99,99),
                 new Vector2f(100, 100)), new Vector2f(100, 100));
 
 
@@ -68,6 +69,7 @@ public class LevelEditorScene extends Scene{
     @Override
     public void update(float dt) {
         Transform previousPosition = obj1.transform.copy();
+
 
         // FPS Counter
         //System.out.println("FPS: " + (1.0 / dt));
@@ -107,7 +109,9 @@ public class LevelEditorScene extends Scene{
             go.update(dt);
         }
         this.renderer.render();
+
     }
+
 
     public void tileMapGameObjectsAttachToRenderer(ArrayList<GameObject> sprites) {
         for(int i = 0; i < sprites.size(); i++) {

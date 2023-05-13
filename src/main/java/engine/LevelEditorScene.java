@@ -50,14 +50,14 @@ public class LevelEditorScene extends Scene{
         tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
 
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(0,0),
-                new Vector2f(100, 100)) , 1);
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(0 ,0),
+                new Vector2f(300, 300)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
 
         collisionBox1 = new CollisionBox(new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)), new Vector2f(100, 100));
-        collisionBox2 = new CollisionBox(new Transform(new Vector2f(99,99),
+        collisionBox2 = new CollisionBox(new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)), new Vector2f(100, 100));
 
 
@@ -82,15 +82,19 @@ public class LevelEditorScene extends Scene{
         // Movement
         if(KeyListener.isKeyPressed(KeyEvent.VK_D)) {
             obj1.transform.position.x += 100 * dt;
+            collisionBox1.changePos(new Vector2f(collisionBox1.transform.position.x + 100 * dt, collisionBox1.transform.position.y));
         }
         if(KeyListener.isKeyPressed(KeyEvent.VK_A)) {
             obj1.transform.position.x -= 100 * dt;
+            collisionBox1.changePos(new Vector2f(collisionBox1.transform.position.x - 100 * dt, collisionBox1.transform.position.y));
         }
         if(KeyListener.isKeyPressed(KeyEvent.VK_W)) {
             obj1.transform.position.y += 100 * dt;
+            collisionBox1.changePos(new Vector2f(collisionBox1.transform.position.x, collisionBox1.transform.position.y + 100 * dt));
         }
         if(KeyListener.isKeyPressed(KeyEvent.VK_S)) {
             obj1.transform.position.y -= 100 * dt;
+            collisionBox1.changePos(new Vector2f(collisionBox1.transform.position.x, collisionBox1.transform.position.y - 100 * dt));
         }
 
         if(obj1.transform.position.x < previousPosition.position.x) {
@@ -104,8 +108,10 @@ public class LevelEditorScene extends Scene{
         } else if (obj1.transform.position.x == previousPosition.position.x) {
             animationStop.play(dt, obj1, sprites);
         }
-        
 
+        if (collisionBox1.isThatCollited(collisionBox2)){
+            System.out.println("COLLITED");
+        }
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);

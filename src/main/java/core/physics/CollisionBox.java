@@ -4,7 +4,7 @@ import engine.Transform;
 import org.joml.Vector2f;
 
 public class CollisionBox {
-    private Transform transform;
+    public Transform transform;
     private Vector2f size;
 
     public CollisionBox(Transform transform, Vector2f size) {
@@ -20,30 +20,17 @@ public class CollisionBox {
         this.transform.setPosition(pos);
     }
 
+
+
     public boolean isThatCollited(CollisionBox collisionBox) {
-        boolean collisionX = this.transform.position.x + this.size.x >=
-                collisionBox.transform.position.x &&
-                collisionBox.transform.position.x + collisionBox.getSize().x >=
-                collisionBox.transform.position.x;
-        boolean collisionY = this.transform.position.y + this.size.y >=
-                collisionBox.transform.position.y &&
-                collisionBox.transform.position.y + collisionBox.getSize().y >=
-                        collisionBox.transform.position.y;
+        boolean collisionX = this.transform.position.x <=
+                collisionBox.transform.position.x + collisionBox.size.x &&
+                this.transform.position.x + this.size.x >= collisionBox.transform.position.x;
+
+
+        boolean collisionY = this.transform.position.y <=
+                collisionBox.transform.position.y + collisionBox.size.y &&
+                this.transform.position.y + this.size.y >collisionBox.transform.position.y;
         return collisionX && collisionY;
     }
-
-    /*
-    public boolean isThatCollited(CollisionBox collisionBox) {
-        boolean collisionX = (this.transform.position.x + ((this.size.x) * this.transform.scale.x)) >=
-                collisionBox.transform.position.x &&
-                collisionBox.transform.position.x + (collisionBox.getSize().x * collisionBox.transform.scale.x) >=
-                        collisionBox.transform.position.x;
-        boolean collisionY = (this.transform.position.y + ((this.size.y) * this.transform.scale.y)) >=
-                collisionBox.transform.position.y &&
-                collisionBox.transform.position.y + (collisionBox.getSize().y * collisionBox.transform.scale.y) >=
-                        collisionBox.transform.position.y;
-        return collisionX && collisionY;
-    }
-
-    */
 }

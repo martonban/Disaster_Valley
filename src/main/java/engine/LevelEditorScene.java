@@ -7,6 +7,7 @@ import components.TileMap;
 import core.physics.CollisionBox;
 import org.joml.Vector2f;
 import core.os.AssetPool;
+import renderer.LineRenderBatch;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class LevelEditorScene extends Scene{
 
     CollisionBox collisionBox1;
     CollisionBox collisionBox2;
+
+    float[] points  = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f};
+
 
 
     public LevelEditorScene() {
@@ -44,6 +48,7 @@ public class LevelEditorScene extends Scene{
 
         tileMap.generateTileMap();
         tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
+
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)) , 1);
@@ -99,10 +104,7 @@ public class LevelEditorScene extends Scene{
         } else if (obj1.transform.position.x == previousPosition.position.x) {
             animationStop.play(dt, obj1, sprites);
         }
-
-        if(collisionBox1.isThatCollited(collisionBox2)) {
-            System.out.println("Collited");
-        }
+        
 
 
         for (GameObject go : this.gameObjects) {

@@ -12,17 +12,19 @@ import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-    private int widt, height;
+    private int width, height;
     private String title;
     public float r, g, b, a;
     private boolean fadeToBalck = false;
 
     private static Window window = null;
     private long glfwWindow;
+    private ImGuiLayer imGuiLayer;
+
     private static Scene currentScene;
 
     private Window() {
-        this.widt = 1920;
+        this.width = 1920;
         this.height = 1080;
         this.title = "Disaster Valley";
         r = 1;
@@ -85,7 +87,7 @@ public class Window {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
-        glfwWindow = glfwCreateWindow(this.widt, this.height, this.title, NULL, NULL);
+        glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
 
         if(glfwWindow == NULL){
             throw new IllegalStateException("Failed to load GLFW !");
@@ -95,6 +97,10 @@ public class Window {
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+        glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+            Window.setWidth(newWidth);
+            Window.setHeight(newHeight);
+        });
 
         glfwMakeContextCurrent(glfwWindow);
         glfwShowWindow(glfwWindow);
@@ -103,6 +109,12 @@ public class Window {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        /*
+        this.imGuiLayer = new ImGuiLayer(glfwWindow);
+        this.imGuiLayer.initImGui();
+        */
+
         Window.changeScene(0);
     }
 
@@ -121,11 +133,27 @@ public class Window {
                 currentScene.update(dt);
             }
 
+            //this.imGuiLayer.update(dt);
             glfwSwapBuffers(glfwWindow);
 
             endTime = (float)glfwGetTime();
             dt = endTime - beginTime;
             beginTime = endTime;
         }
+    }
+    public static int getWidth() {
+        return get().width;
+    }
+
+    public static int getHeight() {
+        return get().height;
+    }
+
+    public static void setWidth(int newWidth) {
+        get().width = newWidth;
+    }
+
+    public static void setHeight(int newHeight) {
+        get().height = newHeight;
     }
 }

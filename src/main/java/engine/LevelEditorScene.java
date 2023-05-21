@@ -26,8 +26,10 @@ public class LevelEditorScene extends Scene{
     CollisionBox collisionBox1;
     CollisionBox collisionBox2;
 
-    float[] points  = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f};
+    float[] points  = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+                        100.0f, 100.0f, 1.0f, 0.0f, 0.0f, 1.0f};
 
+    private LineRenderBatch lineRenderBatch;
 
 
     public LevelEditorScene() {
@@ -42,29 +44,32 @@ public class LevelEditorScene extends Scene{
 
         sprites = AssetPool.getSpritesheet("assets/Character/PlayerMovement.png");
 
-        TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
-                "assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
-                16, 64,77, -1);
+        lineRenderBatch = new LineRenderBatch(points);
 
-        tileMap.generateTileMap();
-        tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
+        //TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
+                //"assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
+                //16, 64,77, -1);
+
+        //tileMap.generateTileMap();
+        //tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(0 ,0),
-                new Vector2f(300, 300)) , 1);
+                new Vector2f(100, 100)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
 
         collisionBox1 = new CollisionBox(new Transform(new Vector2f(0,0),
                 new Vector2f(100, 100)), new Vector2f(100, 100));
-        collisionBox2 = new CollisionBox(new Transform(new Vector2f(0,0),
-                new Vector2f(100, 100)), new Vector2f(100, 100));
+        collisionBox2 = new CollisionBox(new Transform(new Vector2f(128,0),
+                new Vector2f(100, 100)), new Vector2f(64, 64));
 
 
     }
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
+        AssetPool.getShader("assets/shaders/line.glsl");
 
         AssetPool.addSpritesheet("assets/Character/PlayerMovement.png",
                 new Spritesheet(AssetPool.getTexture("assets/Character/PlayerMovement.png"),
@@ -112,6 +117,8 @@ public class LevelEditorScene extends Scene{
         if (collisionBox1.isThatCollited(collisionBox2)){
             System.out.println("COLLITED");
         }
+
+        lineRenderBatch.render();
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);

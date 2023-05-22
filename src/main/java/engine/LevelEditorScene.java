@@ -46,12 +46,12 @@ public class LevelEditorScene extends Scene{
 
         lineRenderBatch = new LineRenderBatch(points);
 
-        //TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
-                //"assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
-                //16, 64,77, -1);
+        TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
+                "assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
+                16, 64,77, -1);
 
-        //tileMap.generateTileMap();
-        //tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
+        tileMap.generateTileMap();
+        tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(0 ,0),
@@ -64,12 +64,10 @@ public class LevelEditorScene extends Scene{
         collisionBox2 = new CollisionBox(new Transform(new Vector2f(128,0),
                 new Vector2f(100, 100)), new Vector2f(64, 64));
 
-
     }
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
-        AssetPool.getShader("assets/shaders/line.glsl");
 
         AssetPool.addSpritesheet("assets/Character/PlayerMovement.png",
                 new Spritesheet(AssetPool.getTexture("assets/Character/PlayerMovement.png"),
@@ -118,13 +116,11 @@ public class LevelEditorScene extends Scene{
             System.out.println("COLLITED");
         }
 
-        lineRenderBatch.render();
-
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
         this.renderer.render();
-
+        lineRenderBatch.render();
     }
 
 

@@ -1,6 +1,7 @@
 package renderer;
 
 import core.os.AssetPool;
+import engine.Window;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -80,6 +81,8 @@ public class LineRenderBatch {
         //glBufferData(GL_ARRAY_BUFFER, points.length, GL_DYNAMIC_DRAW);
         //glBufferSubData(GL_ARRAY_BUFFER, 0, points);
 
+        shader.uploadMat4f("uProjection", Window.getScene().camera().getProjectionMatrix());
+        shader.uploadMat4f("uView", Window.getScene().camera().getViewMatrix());
         shader.use();
 
         glBindVertexArray(vaoID);

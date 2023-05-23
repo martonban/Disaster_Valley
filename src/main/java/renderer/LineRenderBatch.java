@@ -27,9 +27,11 @@ public class LineRenderBatch {
     private final int POINT_COLOR_OFFSET = POINT_COORDS_OFFSET + POINT_COORDS_SIZE * Float.BYTES;
 
     private float[] points = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-            100.0f, 100.0f, 1.0f, 0.0f, 0.0f, 1.0f};
+            700.0f, 100.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+            500.0f, 30.0f, 1.0f, 0.0f, 0.0f, 1.0f };
     private int[] indices = {
             0, 1,
+            1, 2
     };
 
     private int vaoID, vboID;
@@ -89,7 +91,7 @@ public class LineRenderBatch {
         glEnableVertexAttribArray(5);
         glEnableVertexAttribArray(6);
 
-        glDrawElements(GL_LINE_STRIP, points.length, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_LINES, points.length, GL_UNSIGNED_INT, 0);
 
 
         glDisableVertexAttribArray(5);

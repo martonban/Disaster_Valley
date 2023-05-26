@@ -8,7 +8,7 @@ import core.converter.CollisionDetectionConverter;
 import core.physics.CollisionBox;
 import org.joml.Vector2f;
 import core.os.AssetPool;
-import renderer.LineRenderBatch;
+import renderer.LineRender;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class LevelEditorScene extends Scene{
     float[] points  = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
                         100.0f, 100.0f, 1.0f, 0.0f, 0.0f, 1.0f};
 
-    private LineRenderBatch lineRenderBatch;
+    private LineRender lineRender;
 
 
     public LevelEditorScene() {
@@ -47,7 +47,7 @@ public class LevelEditorScene extends Scene{
 
         sprites = AssetPool.getSpritesheet("assets/Character/PlayerMovement.png");
 
-        lineRenderBatch = new LineRenderBatch(points);
+        lineRender = new LineRender(points);
 
         TileMap tileMap = new TileMap("assets/test/test.txt", "LineByLine",
                 "assets/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png",
@@ -134,7 +134,7 @@ public class LevelEditorScene extends Scene{
             go.update(dt);
         }
         this.renderer.render();
-        lineRenderBatch.render();
+        lineRender.render();
     }
 
 

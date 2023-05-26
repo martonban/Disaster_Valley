@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 
-public class LineRenderBatch {
+public class LineRender {
 
     private final int FLOAT_SIZE_IN_BYTES = 4;
     private final int POINT_COORDS_SIZE = 2;
@@ -36,7 +36,7 @@ public class LineRenderBatch {
     private int vaoID, vboID;
     private Shader shader;
 
-    public LineRenderBatch(float[] points) {
+    public LineRender(float[] points) {
         shader = AssetPool.getShader("assets/shaders/line.glsl");
         shader.compile();
         start();

@@ -34,6 +34,8 @@ public class LevelEditorScene extends Scene{
 
     private LineRender lineRender;
 
+    private boolean developerMode = true;
+
 
     public LevelEditorScene() {
 
@@ -67,15 +69,6 @@ public class LevelEditorScene extends Scene{
                 new Vector2f(100, 100)), new Vector2f(100, 100));
         collisionBox2 = new CollisionBox(new Transform(new Vector2f(128,0),
                 new Vector2f(100, 100)), new Vector2f(64, 64));
-
-
-
-        collisionDetectionConverter = new CollisionDetectionConverter("assets/test/coll.txt");
-        ArrayList<Integer> test =  collisionDetectionConverter.getDataForInitCollisionBoxes();
-        for(int i : test){
-            System.out.println(i);
-        }
-
 
 
     }
@@ -114,6 +107,10 @@ public class LevelEditorScene extends Scene{
             collisionBox1.changePos(new Vector2f(collisionBox1.transform.position.x, collisionBox1.transform.position.y - 100 * dt));
         }
 
+        if(KeyListener.isKeyPressed(KeyEvent.VK_M)){
+            developerMode = !(developerMode);
+        }
+
         if(obj1.transform.position.x < previousPosition.position.x) {
             animationLeft.play(dt, obj1, sprites);
         } else if (obj1.transform.position.y < previousPosition.position.y) {
@@ -134,7 +131,10 @@ public class LevelEditorScene extends Scene{
             go.update(dt);
         }
         this.renderer.render();
-        lineRender.render();
+
+        if(developerMode) {
+            lineRender.render();
+        }
     }
 
 

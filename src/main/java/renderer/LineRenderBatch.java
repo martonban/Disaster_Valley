@@ -8,7 +8,6 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL15.glBufferSubData;
 import static org.lwjgl.opengl.GL15C.glBindBuffer;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
@@ -54,11 +53,6 @@ public class LineRenderBatch {
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
         glBufferData(GL_ARRAY_BUFFER, vertexBuffer, GL_STATIC_DRAW);
 
-
-        for(int i = 0; i < indices.length; i++){
-            System.out.println(indices[i]);
-        }
-
         IntBuffer indicesBuffer = BufferUtils.createIntBuffer(indices.length);
         indicesBuffer.put(indices).flip();
 
@@ -66,7 +60,6 @@ public class LineRenderBatch {
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer , GL_STATIC_DRAW);
-
 
         glVertexAttribPointer(5, POINT_COORDS_SIZE, GL_FLOAT, false, POINT_SIZE_IN_BYTES, 0);
         glEnableVertexAttribArray(5);
@@ -93,11 +86,9 @@ public class LineRenderBatch {
 
         glDrawElements(GL_LINES, points.length, GL_UNSIGNED_INT, 0);
 
-
         glDisableVertexAttribArray(5);
         glDisableVertexAttribArray(6);
         glBindVertexArray(0);
         shader.detach();
-
     }
 }

@@ -4,6 +4,7 @@ import components.Animation;
 import components.SpriteRenderer;
 import components.Spritesheet;
 import components.TileMap;
+import core.converter.CollisionDetectionConverter;
 import core.physics.CollisionBox;
 import org.joml.Vector2f;
 import core.os.AssetPool;
@@ -25,6 +26,8 @@ public class LevelEditorScene extends Scene{
 
     CollisionBox collisionBox1;
     CollisionBox collisionBox2;
+
+    private CollisionDetectionConverter collisionDetectionConverter;
 
     float[] points  = {0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
                         100.0f, 100.0f, 1.0f, 0.0f, 0.0f, 1.0f};
@@ -54,6 +57,7 @@ public class LevelEditorScene extends Scene{
         tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
 
+
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(0 ,0),
                 new Vector2f(100, 100)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
@@ -63,6 +67,16 @@ public class LevelEditorScene extends Scene{
                 new Vector2f(100, 100)), new Vector2f(100, 100));
         collisionBox2 = new CollisionBox(new Transform(new Vector2f(128,0),
                 new Vector2f(100, 100)), new Vector2f(64, 64));
+
+
+
+        collisionDetectionConverter = new CollisionDetectionConverter("assets/test/coll.txt");
+        ArrayList<Integer> test =  collisionDetectionConverter.getDataForInitCollisionBoxes();
+        for(int i : test){
+            System.out.println(i);
+        }
+
+
 
     }
 

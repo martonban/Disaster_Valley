@@ -1,6 +1,6 @@
-package core.os;
+package core.os.memory;
 
-import components.Spritesheet;
+import renderer.component.Spritesheet;
 import renderer.Shader;
 import renderer.Texture;
 

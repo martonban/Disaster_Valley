@@ -1,5 +1,7 @@
-package engine;
+package scenes;
 
+import engine.Camera;
+import engine.GameObject;
 import renderer.Renderer;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package renderer;
 
-import components.SpriteRenderer;
+import renderer.component.SpriteRenderer;
 import engine.GameObject;
 
 import java.util.ArrayList;

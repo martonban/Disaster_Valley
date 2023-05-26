@@ -1,13 +1,13 @@
 package renderer;
 
-import components.SpriteRenderer;
-import engine.Window;
+import renderer.component.SpriteRenderer;
+import core.os.components.Window;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import java.util.ArrayList;
 import java.util.List;
-import core.os.AssetPool;
+import core.os.memory.AssetPool;
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
 import static org.lwjgl.opengl.GL11.GL_TRIANGLES;

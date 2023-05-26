@@ -1,4 +1,4 @@
-package components;
+package renderer.component;
 
 import engine.Component;
 import engine.Transform;

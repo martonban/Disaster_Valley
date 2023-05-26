@@ -1,4 +1,6 @@
-package engine;
+package scenes;
+
+import core.os.components.Window;
 
 public class LevelScene extends Scene{
     public LevelScene() {

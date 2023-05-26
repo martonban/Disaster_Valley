@@ -1,8 +1,7 @@
 package core.converter;
 
-import core.os.FileReader;
+import core.os.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TileMapConverter {
     private String dataFromFileReader;

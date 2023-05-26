@@ -1,5 +1,6 @@
 package engine;
 
+import core.os.components.Window;
 import imgui.*;
 import imgui.callbacks.ImStrConsumer;
 import imgui.callbacks.ImStrSupplier;

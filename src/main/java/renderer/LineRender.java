@@ -1,7 +1,7 @@
 package renderer;
 
-import core.os.AssetPool;
-import engine.Window;
+import core.os.memory.AssetPool;
+import core.os.components.Window;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;

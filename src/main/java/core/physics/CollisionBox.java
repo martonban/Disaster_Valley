@@ -1,5 +1,6 @@
 package core.physics;
 
+import core.os.listeners.MouseListener;
 import engine.Transform;
 import org.joml.Vector2f;
 
@@ -33,4 +34,14 @@ public class CollisionBox {
                 this.transform.position.y + this.size.y >collisionBox.transform.position.y;
         return collisionX && collisionY;
     }
+
+    public boolean isCollitedWithTheCursor() {
+        boolean collisionX = this.transform.position.x <= MouseListener.getX() &&
+                this.transform.position.x + this.size.x >= MouseListener.getX();
+        boolean collisionY = this.transform.position.y <= MouseListener.getY() &&
+                this.transform.position.y + this.size.y >= MouseListener.getY();
+        System.out.println(this.transform.position.x + "     " + MouseListener.getX() + "    " + collisionX);
+        return collisionX && collisionY;
+    }
+
 }

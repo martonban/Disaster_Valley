@@ -2,6 +2,7 @@ package scenes;
 
 import components.Animation;
 import core.os.listeners.KeyListener;
+import core.os.listeners.MouseListener;
 import engine.Camera;
 import engine.GameObject;
 import engine.Transform;
@@ -16,6 +17,7 @@ import renderer.LineRender;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
 
 
 public class LevelEditorScene extends Scene{
@@ -39,6 +41,7 @@ public class LevelEditorScene extends Scene{
     private LineRender lineRender;
 
     private boolean developerMode = true;
+
 
 
     public LevelEditorScene() {
@@ -89,7 +92,6 @@ public class LevelEditorScene extends Scene{
     public void update(float dt) {
         Transform previousPosition = obj1.transform.copy();
 
-
         // FPS Counter
         //System.out.println("FPS: " + (1.0 / dt));
 
@@ -130,6 +132,12 @@ public class LevelEditorScene extends Scene{
         if (collisionBox1.isThatCollited(collisionBox2)){
             System.out.println("COLLITED");
         }
+
+        if(collisionBox1.isCollitedWithTheCursor()) {
+            System.out.println("CURSOR COLLITED");
+        }
+
+
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);

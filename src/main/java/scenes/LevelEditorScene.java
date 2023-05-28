@@ -2,13 +2,12 @@ package scenes;
 
 import components.Animation;
 import core.os.listeners.KeyListener;
-import core.os.listeners.MouseListener;
 import engine.Camera;
 import engine.GameObject;
 import engine.Transform;
-import renderer.component.SpriteRenderer;
+import components.SpriteRenderer;
 import renderer.component.Spritesheet;
-import components.TileMap;
+import renderer.component.TileMap;
 import core.converter.CollisionDetectionConverter;
 import core.physics.CollisionBox;
 import org.joml.Vector2f;
@@ -133,7 +132,7 @@ public class LevelEditorScene extends Scene{
             System.out.println("COLLITED");
         }
 
-        if(collisionBox1.isCollitedWithTheCursor()) {
+        if(collisionBox2.isCollitedWithTheCursor()) {
             System.out.println("CURSOR COLLITED");
         }
 

@@ -1,11 +1,11 @@
-package components;
+package renderer.component;
 
+import components.SpriteRenderer;
 import core.converter.TileMapConverter;
 import core.os.memory.AssetPool;
 import engine.GameObject;
 import engine.Transform;
 import org.joml.Vector2f;
-import renderer.component.SpriteRenderer;
 import renderer.component.Spritesheet;
 
 import java.util.ArrayList;

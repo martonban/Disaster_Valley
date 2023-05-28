@@ -1,6 +1,6 @@
 package renderer;
 
-import renderer.component.SpriteRenderer;
+import components.SpriteRenderer;
 import core.os.components.Window;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -8,6 +8,8 @@ import org.joml.Vector4f;
 import java.util.ArrayList;
 import java.util.List;
 import core.os.memory.AssetPool;
+import renderer.component.Shader;
+import renderer.component.Texture;
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
 import static org.lwjgl.opengl.GL11.GL_TRIANGLES;

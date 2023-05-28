@@ -1,7 +1,6 @@
 package renderer.component;
 
 import org.joml.Vector2f;
-import renderer.Texture;
 
 public class Sprite {
     private Texture texture;

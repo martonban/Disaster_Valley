@@ -3,6 +3,7 @@ package renderer;
 import core.os.memory.AssetPool;
 import core.os.components.Window;
 import org.lwjgl.BufferUtils;
+import renderer.component.Shader;
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;

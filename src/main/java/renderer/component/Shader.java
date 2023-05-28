@@ -1,4 +1,4 @@
-package renderer;
+package renderer.component;
 
 import org.joml.*;
 import org.lwjgl.BufferUtils;

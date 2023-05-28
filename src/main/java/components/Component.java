@@ -1,4 +1,6 @@
-package engine;
+package components;
+
+import engine.GameObject;
 
 public abstract class Component {
     public GameObject gameObject = null;

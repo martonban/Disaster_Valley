@@ -1,7 +1,6 @@
 package components;
 
 import engine.GameObject;
-import renderer.component.SpriteRenderer;
 import renderer.component.Spritesheet;
 
 public class Animation {

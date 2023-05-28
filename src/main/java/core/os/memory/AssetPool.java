@@ -1,8 +1,8 @@
 package core.os.memory;
 
 import renderer.component.Spritesheet;
-import renderer.Shader;
-import renderer.Texture;
+import renderer.component.Shader;
+import renderer.component.Texture;
 
 import java.io.File;
 import java.util.HashMap;

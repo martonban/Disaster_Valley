@@ -116,10 +116,10 @@ public class Window {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        /*
-        this.imGuiLayer = new ImGuiLayer(glfwWindow);
-        this.imGuiLayer.initImGui();
-        */
+
+        //this.imGuiLayer = new ImGuiLayer(glfwWindow);
+        //this.imGuiLayer.initImGui();
+
 
         Window.changeScene(0);
     }

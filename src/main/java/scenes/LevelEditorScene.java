@@ -72,9 +72,9 @@ public class LevelEditorScene extends Scene{
         this.addGameObjectToScene(obj1);
 
         collisionBox1 = new CollisionBox(new Transform(new Vector2f(0,0),
-                new Vector2f(100, 100)), new Vector2f(100, 100));
-        collisionBox2 = new CollisionBox(new Transform(new Vector2f(128,0),
-                new Vector2f(100, 100)), new Vector2f(64, 64));
+                new Vector2f(100, 100)), new Vector2f(100   , 100));
+        collisionBox2 = new CollisionBox(new Transform(new Vector2f(0,0),
+                new Vector2f(100, 64)), new Vector2f(100, 64));
 
 
     }

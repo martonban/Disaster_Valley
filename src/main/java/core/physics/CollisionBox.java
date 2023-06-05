@@ -37,11 +37,9 @@ public class CollisionBox {
 
     public boolean isCollitedWithTheCursor() {
         boolean collisionX = this.transform.position.x <= MouseListener.getOrthoX() &&
-                (this.transform.position.x + this.size.x) >= MouseListener.getOrthoX();
+                (this.transform.position.x + this.transform.scale.x) >= MouseListener.getOrthoX();
         boolean collisionY = this.transform.position.y <= MouseListener.getOrthoY() &&
                 this.transform.position.y + this.transform.scale.y >= MouseListener.getOrthoY();
-        System.out.println(this.transform.position.x + "-" +  (this.transform.position.x + this.size.x) + "     " + MouseListener.getX() + "    " + (collisionX && collisionY));
         return collisionX && collisionY;
     }
-
 }

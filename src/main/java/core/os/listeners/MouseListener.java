@@ -1,6 +1,7 @@
 package core.os.listeners;
 
 import core.os.components.Window;
+import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
@@ -72,18 +73,18 @@ public class MouseListener {
 
     public static float getOrthoX() {
         float currentX = getX();
-        currentX = (currentX / (float) Window.getWidth());
+        currentX = (currentX / (float) Window.getWidth() * 2.0f - 1.0f);
         Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
-        tmp.mul((Window.getScene().camera().getInverseProjectionMatrix()).mul(Window.getScene().camera().getInverseViewMatrix()));
+        tmp.mul(Window.getScene().camera().getInverseProjectionMatrix()).mul(Window.getScene().camera().getInverseViewMatrix());
         currentX = tmp.x;
         return currentX;
     }
 
     public static float getOrthoY() {
         float currentY = getY();
-        currentY = (currentY / (float) Window.getWidth());
+        currentY = - (currentY / (float) Window.getHeight() * 2.0f - 1.0f);
         Vector4f tmp = new Vector4f(0, currentY, 0, 1);
-        tmp.mul((Window.getScene().camera().getInverseProjectionMatrix()).mul(Window.getScene().camera().getInverseViewMatrix()));
+        tmp.mul(Window.getScene().camera().getInverseProjectionMatrix()).mul(Window.getScene().camera().getInverseViewMatrix());
         currentY = tmp.y;
         return currentY;
     }

@@ -65,7 +65,6 @@ public class LevelEditorScene extends Scene{
         tileMapGameObjectsAttachToRenderer(tileMap.getSprites());
 
 
-
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(0 ,0),
                 new Vector2f(100, 100)) , 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
@@ -75,8 +74,6 @@ public class LevelEditorScene extends Scene{
                 new Vector2f(100, 100)), new Vector2f(100   , 100));
         collisionBox2 = new CollisionBox(new Transform(new Vector2f(0,0),
                 new Vector2f(100, 64)), new Vector2f(100, 64));
-
-
     }
 
     private void loadResources() {
@@ -136,8 +133,6 @@ public class LevelEditorScene extends Scene{
             System.out.println("CURSOR COLLITED");
         }
 
-
-
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
@@ -147,7 +142,6 @@ public class LevelEditorScene extends Scene{
             lineRender.render();
         }
     }
-
 
     public void tileMapGameObjectsAttachToRenderer(ArrayList<GameObject> sprites) {
         for(int i = 0; i < sprites.size(); i++) {

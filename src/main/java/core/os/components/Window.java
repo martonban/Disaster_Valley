@@ -140,6 +140,7 @@ public class Window {
             }
 
             //this.imGuiLayer.update(dt);
+
             glfwSwapBuffers(glfwWindow);
 
             endTime = (float)glfwGetTime();

@@ -13,13 +13,6 @@ public class CollisionBoxGraphics {
         this.indices = generateIndices();
     }
 
-
-
-
-
-
-
-
     /*
     *  3-----------4
     *  |           |
